@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Custom CSS -->
+    <style>
+      .post-card {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex-basis: 30%;
+            margin-right: 1.5%;
+        }
+        .posts-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .post-image {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .post-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .like-counter {
+            font-weight: bold;
+        }
+        .comment-footer {
+            margin-top: 10px;
+        }
+        .comment {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+        .comment img {
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+        }
+        .btn-lg {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm" style="padding: 0.5rem 1rem;">
+    <div class="container-fluid">
+        <a href="index.html" class="navbar-brand" style="font-size: 1rem;">Botanica</a>
+        
+        <!-- Navbar Toggler for Mobile View -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Left Section: Search Form and Filters -->
+            <form id="search-filter-form" class="d-flex align-items-center me-auto">
+                <div class="input-group input-group-sm me-1">
+                    <input type="text" class="form-control form-control-sm" id="search-input" placeholder="Search by name">
+                    <button class="btn btn-outline-secondary btn-sm" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <select class="form-select form-select-sm me-1" id="filter-region">
+                    <option value="">Region</option>
+                    <option value="Asia">Asia</option>
+                    <option value="India">India</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Southeast Asia">Southeast Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="North America">North America</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                </select>
+
+                <select class="form-select form-select-sm me-1" id="filter-usage">
+                    <option value="">Usage</option>
+                    <option value="Medicinal">Medicinal</option>
+                </select>
+
+                <select class="form-select form-select-sm me-1" id="filter-benefits">
+                    <option value="">Benefits</option>
+                    <option value="Anti-inflammatory">Anti-inflammatory</option>
+                    <option value="Antibacterial">Antibacterial</option>
+                    <option value="Antiviral">Antiviral</option>
+                    <option value="Skin Healing">Skin Healing</option>
+                    <option value="Digestive Aid">Digestive Aid</option>
+                    <option value="Stress Relief">Stress Relief</option>
+                    <option value="Immune Support">Immune Support</option>
+                    <option value="Antioxidant">Antioxidant</option>
+                    <option value="Cold Prevention">Cold Prevention</option>
+                </select>
+
+                <button id="voice-btn" class="btn btn-outline-secondary btn-sm ms-1">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </form>
+            
+            <!-- Right Section: Navigation Links -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favorites.html"><i class="fas fa-heart"></i> Favorites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notes.html"><i class="fas fa-pen"></i> Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html"><i class="fas fa-star"></i> Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="community.html"><i class="fas fa-users"></i> Community</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="remedies.html"><i class="fas fa-leaf"></i> Remedies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Posts Container -->
+    <div class="container my-4">
+        <div id="posts-container" class="posts-container">
+            <!-- Posts will be dynamically generated here -->
+        </div>
+    </div>
+
+    <!-- Footer with Post Button -->
+    <footer class="footer fixed-bottom bg-light">
+        <div class="container text-center">
+            <button id="create-post-btn" class="btn btn-primary btn-lg">
+                <i class="fas fa-plus"></i> Create Post
+            </button>
+        </div>
+    </footer>
+
+    <!-- Modal for New Post -->
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postModalLabel">Create a New Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="new-post-form">
+                        <div class="mb-3">
+                            <label for="post-image" class="form-label">Upload Image or Video</label>
+                            <input type="file" id="post-image" class="form-control" accept="image/*,video/*">
+                        </div>
+                        <div class="mb-3">
+                            <label for="post-caption" class="form-label">Caption</label>
+                            <textarea id="post-caption" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load posts from localStorage on page load
+            loadPosts();
+
+            document.getElementById('create-post-btn').addEventListener('click', function() {
+                var modal = new bootstrap.Modal(document.getElementById('postModal'));
+                modal.show();
+            });
+
+            document.getElementById('new-post-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const imageFile = document.getElementById('post-image').files[0];
+                const caption = document.getElementById('post-caption').value;
+
+                if (imageFile && caption) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const post = {
+                            imageUrl: e.target.result,
+                            caption: caption,
+                            likes: 0,
+                            comments: []
+                        };
+                        savePost(post);
+                        addPostToDOM(post);
+                    };
+                    reader.readAsDataURL(imageFile);
+
+                    // Close the modal
+                    var modal = bootstrap.Modal.getInstance(document.getElementById('postModal'));
+                    modal.hide();
+                } else {
+                    alert('Please provide both an image/video and a caption.');
+                }
+            });
+        });
+
+        // Save post to localStorage
+        function savePost(post) {
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+        }
+
+        // Load posts from localStorage and display them
+        function loadPosts() {
+            const posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.forEach(post => {
+                addPostToDOM(post);
+            });
+        }
+
+        // Add post to DOM
+        function addPostToDOM(post) {
+            const postsContainer = document.getElementById('posts-container');
+            const postIndex = postsContainer.children.length;
+
+            const postCard = document.createElement('div');
+            postCard.className = 'post-card';
+
+            postCard.innerHTML = `
+                <img src="${post.imageUrl}" class="post-image" alt="Post Image">
+                <p class="post-caption">${post.caption}</p>
+                <div class="post-footer">
+                    <button class="btn btn-light" onclick="likePost(this, ${postIndex})">
+                        <i class="fas fa-heart"></i> <span class="like-counter">${post.likes}</span> Likes
+                    </button>
+                    <button class="btn btn-light" onclick="showComments(this)"><i class="fas fa-comment"></i> Comment</button>
+                    <button class="btn btn-danger" onclick="removePost(${postIndex})"><i class="fas fa-trash"></i> Remove</button>
+                </div>
+                <div class="post-comments" style="display: none;">
+                    <!-- Comments will be dynamically added here -->
+                </div>
+                <div class="comment-footer">
+                    <input type="text" class="form-control" placeholder="Add a comment..." onkeydown="handleCommentSubmit(event, this, ${postIndex})">
+                </div>
+            `;
+
+            postsContainer.prepend(postCard);
+        }
+
+        // Like a post
+        function likePost(button, index) {
+            const posts = JSON.parse(localStorage.getItem('posts'));
+            const likeCounter = button.querySelector('.like-counter');
+            let likes = parseInt(likeCounter.textContent);
+            likes += 1;
+            likeCounter.textContent = likes;
+
+            posts[index].likes = likes;
+            localStorage.setItem('posts', JSON.stringify(posts));
+        }
+
+        // Show comments for a post
+        function showComments(button) {
+            const commentsSection = button.closest('.post-card').querySelector('.post-comments');
+            commentsSection.style.display = commentsSection.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Handle comment submission
+        function handleCommentSubmit(event, input, index) {
+            if (event.key === 'Enter' && input.value.trim() !== '') {
+                const posts = JSON.parse(localStorage.getItem('posts'));
+                const comment = input.value.trim();
+                posts[index].comments.push(comment);
+                localStorage.setItem('posts', JSON.stringify(posts));
+
+                const commentsSection = input.closest('.post-card').querySelector('.post-comments');
+                const commentElement = document.createElement('div');
+                commentElement.className = 'comment';
+                commentElement.innerHTML = `<img src="https://via.placeholder.com/40" alt="User Avatar"><p>${comment}</p>`;
+                commentsSection.append(commentElement);
+
+                input.value = '';
+            }
+        }
+
+        // Remove a post
+        function removePost(index) {
+            let posts = JSON.parse(localStorage.getItem('posts'));
+            posts.splice(index, 1);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            document.getElementById('posts-container').innerHTML = '';
+            loadPosts();  // Re-load posts after removal
+        }
+    </script>
+</body>
+</html>
+
+
