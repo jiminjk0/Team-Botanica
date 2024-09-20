@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botanica - Favorites</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  
+     <!-- Navbar -->
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm" style="padding: 0.5rem 1rem;">
+    <div class="container-fluid">
+        <a href="index.html" class="navbar-brand" style="font-size: 1rem;">Botanica</a>
+        
+        <!-- Navbar Toggler for Mobile View -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Left Section: Search Form and Filters -->
+            <form id="search-filter-form" class="d-flex align-items-center me-auto">
+                <div class="input-group input-group-sm me-1">
+                    <input type="text" class="form-control form-control-sm" id="search-input" placeholder="Search by name">
+                    <button class="btn btn-outline-secondary btn-sm" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <select class="form-select form-select-sm me-1" id="filter-region">
+                    <option value="">Region</option>
+                    <option value="Asia">Asia</option>
+                    <option value="India">India</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Southeast Asia">Southeast Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="North America">North America</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                </select>
+
+                <select class="form-select form-select-sm me-1" id="filter-usage">
+                    <option value="">Usage</option>
+                    <option value="Medicinal">Medicinal</option>
+                </select>
+
+                <select class="form-select form-select-sm me-1" id="filter-benefits">
+                    <option value="">Benefits</option>
+                    <option value="Anti-inflammatory">Anti-inflammatory</option>
+                    <option value="Antibacterial">Antibacterial</option>
+                    <option value="Antiviral">Antiviral</option>
+                    <option value="Skin Healing">Skin Healing</option>
+                    <option value="Digestive Aid">Digestive Aid</option>
+                    <option value="Stress Relief">Stress Relief</option>
+                    <option value="Immune Support">Immune Support</option>
+                    <option value="Antioxidant">Antioxidant</option>
+                    <option value="Cold Prevention">Cold Prevention</option>
+                </select>
+
+                <button id="voice-btn" class="btn btn-outline-secondary btn-sm ms-1">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </form>
+            
+            <!-- Right Section: Navigation Links -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favorites.html"><i class="fas fa-heart"></i> Favorites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notes.html"><i class="fas fa-pen"></i> Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html"><i class="fas fa-star"></i> Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="community.html"><i class="fas fa-users"></i> Community</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="remedies.html"><i class="fas fa-leaf"></i> Remedies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <!-- Favorites Content -->
+    <div class="container my-4">
+        <h2>Your Favorite Plants</h2>
+        <div class="row" id="favorites-list">
+            <!-- Favorite plant cards will be dynamically generated here -->
+        </div>
+    </div>
+    <!-- Favorites Container -->
+    <div id="favorites-container"></div>
+
+    <footer>
+        <p> &copy; botanica</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="favorites.js"></script>
+   
+</body>
+</html>

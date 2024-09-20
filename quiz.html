@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botanica Quiz</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        
+        
+        .navbar-brand {
+            font-size: 1.25rem;
+        }
+       
+        main {
+            padding: 2rem 1rem;
+        }
+        #quiz-container {
+            background: linear-gradient(135deg, #ffffff, #8DECB4);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        .quiz-question h5 {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .form-check-input {
+            margin-top: 0.3rem;
+        }
+        .btn-primary {
+            background-color: #8DECB4;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            color: black;
+        }
+        .btn-primary:hover {
+            background-color: #7ABA78;
+            transform: translateY(-2px);
+        }
+        .btn-primary:active {
+            background-color: #004085;
+            transform: translateY(0);
+        }
+        #quiz-result {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+        }
+        /* Hide the default radio button */
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Custom radio button appearance */
+input[type="radio"] + label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+input[type="radio"] + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid black; /* Black border */
+    border-radius: 50%;
+    background-color: white;
+}
+
+input[type="radio"]:checked + label::before {
+    background-color: black;
+    box-shadow: inset 0 0 0 5px white; /* Inner circle for checked radio */
+}
+
+/* Add a hover effect */
+input[type="radio"] + label:hover::before {
+    border-color: darkgray;
+}
+
+    </style>
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm" style="padding: 0.5rem 1rem;">
+    <div class="container-fluid">
+        <a href="index.html" class="navbar-brand">Botanica</a>
+        
+        <!-- Navbar Toggler for Mobile View -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Left Section: Search Form and Filters -->
+            <form id="search-filter-form" class="d-flex align-items-center me-auto">
+                <div class="input-group input-group-sm me-1">
+                    <input type="text" class="form-control form-control-sm" id="search-input" placeholder="Search by name">
+                    <button class="btn btn-outline-secondary btn-sm" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <select class="form-select form-select-sm me-1" id="filter-region">
+                    <option value="">Region</option>
+                    <option value="Asia">Asia</option>
+                    <option value="India">India</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Southeast Asia">Southeast Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="North America">North America</option>
+                    <option value="Mediterranean">Mediterranean</option>
+                </select>
+
+                <select class="form-select form-select-sm me-1" id="filter-usage">
+                    <option value="">Usage</option>
+                    <option value="Medicinal">Medicinal</option>
+                </select>
+
+                <select class="form-select form-select-sm me-1" id="filter-benefits">
+                    <option value="">Benefits</option>
+                    <option value="Anti-inflammatory">Anti-inflammatory</option>
+                    <option value="Antibacterial">Antibacterial</option>
+                    <option value="Antiviral">Antiviral</option>
+                    <option value="Skin Healing">Skin Healing</option>
+                    <option value="Digestive Aid">Digestive Aid</option>
+                    <option value="Stress Relief">Stress Relief</option>
+                    <option value="Immune Support">Immune Support</option>
+                    <option value="Antioxidant">Antioxidant</option>
+                    <option value="Cold Prevention">Cold Prevention</option>
+                </select>
+
+                <button id="voice-btn" class="btn btn-outline-secondary btn-sm ms-1">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </form>
+            
+            <!-- Right Section: Navigation Links -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="favorites.html"><i class="fas fa-heart"></i> Favorites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="notes.html"><i class="fas fa-pen"></i> Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html"><i class="fas fa-star"></i> Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="community.html"><i class="fas fa-users"></i> Community</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="remedies.html"><i class="fas fa-leaf"></i> Remedies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="explore.html"><i class="fas fa-compass"></i> Explore</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Quiz Section -->
+<main>
+    <div class="container mt-4">
+        <h1>Botanica Quiz</h1>
+        <div id="quiz-container">
+            <!-- Sample Quiz Questions -->
+            <div class="quiz-question">
+                <h5>1. Which of the following plants is known for its anti-inflammatory properties?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1a" value="A">
+                    <label class="form-check-label" for="q1a">A. Lavender</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1b" value="B">
+                    <label class="form-check-label" for="q1b">B. Peppermint</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1c" value="C">
+                    <label class="form-check-label" for="q1c">C. Tulsi</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1d" value="D">
+                    <label class="form-check-label" for="q1d">D. Thyme</label>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <h5>2. Which plant is often used to help with digestive issues?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2a" value="A">
+                    <label class="form-check-label" for="q2a">A. Tulsi</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2b" value="B">
+                    <label class="form-check-label" for="q2b">B. Thyme</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2c" value="C">
+                    <label class="form-check-label" for="q2c">C. Peppermint</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2d" value="D">
+                    <label class="form-check-label" for="q2d">D. Lavender</label>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <h5>3. Which plant is known for its stress-relief benefits?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3a" value="A">
+                    <label class="form-check-label" for="q3a">A. Peppermint</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3b" value="B">
+                    <label class="form-check-label" for="q3b">B. Tulsi</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3c" value="C">
+                    <label class="form-check-label" for="q3c">C. Thyme</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3d" value="D">
+                    <label class="form-check-label" for="q3d">D. Lavender</label>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <h5>4. Which plant is commonly used to support the immune system?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4a" value="A">
+                    <label class="form-check-label" for="q4a">A. Tulsi</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4b" value="B">
+                    <label class="form-check-label" for="q4b">B. Peppermint</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4c" value="C">
+                    <label class="form-check-label" for="q4c">C. Thyme</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4d" value="D">
+                    <label class="form-check-label" for="q4d">D. Lavender</label>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <h5>5. Which herb is known for its anti-bacterial properties?</h5>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" id="q5a" value="A">
+                    <label class="form-check-label" for="q5a">A. Thyme</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" id="q5b" value="B">
+                    <label class="form-check-label" for="q5b">B. Lavender</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" id="q5c" value="C">
+                    <label class="form-check-label" for="q5c">C. Peppermint</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q5" id="q5d" value="D">
+                    <label class="form-check-label" for="q5d">D. Tulsi</label>
+                </div>
+            </div>
+        </div>
+        <button id="submit-quiz" class="btn btn-primary mt-3">Submit Quiz</button>
+        <div id="quiz-result" class="mt-4"></div>
+    </div>
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="quiz.js"></script>
+</body>
+</html>
+

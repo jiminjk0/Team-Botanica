@@ -1,0 +1,486 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #76885B;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #333; /* Dark gray for text */
+}
+
+/* Plant Cards */
+#recommendations-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Smaller gap between cards */
+    justify-content: center;
+    padding: 10px; /* Reduced padding */
+}
+
+.plant-card {
+    border-radius: 15px;
+    background-color: #DDDDDD;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Increased shadow for distinction */
+    width: 180px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 15px; /* Add space between cards */
+    border: 1px solid #f0f0f0; /* Subtle light gray border */
+}
+
+.plant-card:hover {
+    transform: scale(1.05); /* Slightly smaller scale effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+    background-color: #fafafa; /* Very light gray background on hover */
+}
+
+/* Additional shadow for hovering state to make it more distinct */
+.plant-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Plant card container for better spacing */
+#recommendations-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* Larger gap between cards for distinction */
+}
+
+
+
+.plant-card img {
+    width: 100px; /* Smaller circular image */
+    height: 100px; /* Ensures circle */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #000; /* Black */
+}
+
+.plant-card h5 {
+    margin: 5px 0;
+    font-size: 12px; /* Smaller font */
+    color: #000; /* Black */
+}
+
+.plant-card p {
+    font-size: 10px; /* Smaller font */
+    color: #144524; /* Medium gray */
+}
+
+/* Footer */
+footer {
+
+    background: transparent;
+    color: white;
+    text-align: center;
+    padding: 10px; /* Reduced padding */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 10px; /* Smaller font */
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Seasonal Recommendations Form */
+#season-form {
+    max-width: 400px; /* Reduced max width */
+    margin: 10px auto;
+    padding: 10px; /* Reduced padding */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#season-form label {
+    font-size: 12px; /* Smaller font */
+    color: #000; /* Black */
+    margin-bottom: 5px;
+    display: block;
+}
+
+#season-form select {
+    padding: 8px; /* Reduced padding */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 12px; /* Smaller font */
+    transition: border-color 0.3s;
+}
+
+#season-form select:focus {
+    border-color: #000; /* Black */
+}
+
+#get-recommendations {
+    background-color: #666; /* Medium gray */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Reduced padding */
+    border-radius: 5px; /* Smaller border radius */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#get-recommendations:hover {
+    background-color: #333; /* Dark gray */
+    transform: scale(1.05);
+}
+
+/* Notes Page */
+.note-card {
+    border-radius: 10px;
+    padding: 10px; /* Smaller padding */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Smaller gap between items */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.note-card img {
+    width: 40px; /* Smaller image size */
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+#quiz-btn-a
+{
+    text-decoration: none;
+    color : white;
+}
+/* Favorites Page */
+#favorites-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.favorite-card {
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    margin: 15px;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    background-color: #ffffff; /* White */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.favorite-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Notes Page */
+#notes-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.note-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #ffffff; /* White */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-card h3 {
+    margin-top: 0;
+}
+
+.note-card textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: none;
+    font-size: 16px;
+}
+
+/*.info-section,
+        .notes-section {
+            flex: 1;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        #3d-viewer {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background-color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        #bookmark-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 16px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            color: white;
+            background-color: #e74c3c;
+            border: none;
+            cursor: pointer;
+        }
+
+        #bookmark-button i {
+            margin-right: 5px;
+        }
+
+        #notes-textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            resize: none;
+        }
+
+        #save-notes-button {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+*/
+/* notes */
+/* General styling for the note card container */
+#notes-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to wrap if needed */
+    gap: 10px; /* Space between cards */
+    justify-content: center; /* Center the cards */
+}
+
+/* Styling for individual note cards */
+.note-card {
+    display: flex;
+    flex-direction: column; /* Vertical stacking for content */
+    background-color: #f8f9fa; /* Light background */
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    width: 200px; /* Fixed width for uniformity */
+    max-height: 300px; /* Limit height */
+}
+
+/* Styling for the plant image inside the note card */
+.plant-image {
+    width: 60px; /* Smaller image size */
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Styling for the note textarea */
+textarea.form-control {
+    width: 100%;
+    height: 60px; /* Compact textarea */
+    font-size: 14px; /* Smaller font size */
+    resize: vertical; /* Allow vertical resizing */
+    margin-bottom: 10px;
+}
+
+/* Styling for the Save and Delete buttons */
+.note-buttons {
+    display: flex; /* Flexbox for side-by-side buttons */
+    justify-content: space-between; /* Space between buttons */
+    gap: 5px; /* Space between buttons */
+    margin-top: 10px;
+}
+
+/* Common styling for buttons */
+button {
+    font-size: 12px; /* Smaller font size */
+    padding: 5px 8px; /* Compact padding */
+    display: flex; /* Flexbox for icon and text alignment */
+    align-items: center; /* Align items center */
+}
+
+/* Save button with an icon */
+.save-note-button {
+    background-color: #007bff; /* Primary color */
+    color: #ffffff;
+}
+
+.save-note-button i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+/* Delete button with an icon */
+.delete-note-button {
+    background-color: #dc3545; /* Danger color */
+    color: #ffffff;
+}
+
+.delete-note-button i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+/* remedies */
+/* Remedies container with grid layout */
+
+
+
+/* Hover effect for card */
+.card:hover {
+    transform: translateY(-10px); /* Slight lift on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+/* Image in the card */
+.card-img-top {
+    width: 100%;
+    height: 150px; /* More balanced height for the image */
+    object-fit: cover; /* Ensures image fits nicely */
+    
+    
+}
+
+/* Card body */
+.card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 230px;
+    border-radius: 15px;
+    background-color: blanchedalmond;
+
+}
+
+/* Title styling */
+.card-title {
+    font-size: 1.2rem; /* Slightly bigger font for title */
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+/* Remedy and recipe styling */
+.card-text {
+    font-size: 13px; /* Slightly smaller text for readability */
+    color: #555;
+    margin-bottom: 3px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    #remedies-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row for tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    #remedies-container {
+        grid-template-columns: 1fr; /* 1 card per row for small screens */
+    }
+}
+
+
+  .navbar {
+        
+            border-bottom: 1px solid #444;
+        }
+        .navbar-brand {
+            font-size: 4px;
+        }
+        .navbar-nav .nav-link {
+            color: #fff;
+            margin-left: 1rem;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #76885B;
+        }
+
+/* Styling for favorite plant cards */
+.favorite-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    max-width: 200px;
+    text-align: center;
+}
+
+.favorite-card:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for plant images in favorites */
+.favorite-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Styling for plant name */
+.favorite-card h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Styling for the remove bookmark button */
+.remove-bookmark-btn {
+    background-color: #898121; 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.remove-bookmark-btn:hover {
+    background-color: #ff3333; /* Darker red on hover */
+}
+
+/* Optional: Adding a bit of shadow to buttons for a 3D effect */
+.remove-bookmark-btn:active {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
